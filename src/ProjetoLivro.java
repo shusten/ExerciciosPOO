@@ -11,8 +11,9 @@ public class ProjetoLivro {
         l[2] = new Livro("Java Avançado", "Maria Candido", 800, p[0]);
 
         l[0].abrir();
-        l[0].folhear(400);
+        l[0].folhear(100);
         System.out.println(l[0].detalhes());
+        System.out.println(l[1].detalhes());
 
     }
 }
