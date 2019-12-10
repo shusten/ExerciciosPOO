@@ -7,20 +7,23 @@ public class Livro implements Publicacao {
     private Pessoa leitor;
 
     public String detalhes() {
-        return "Livro{" +
-                "titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", totPaginas=" + totPaginas +
-                ", pagAtual=" + pagAtual +
-                ", aberto=" + aberto +
-                ", leitor=" + leitor +
-                '}';
+        return "Dados do Livro: " +
+                "\n titulo: " + titulo  +
+                "\n autor: " + autor  +
+                "\n Total de paginas: " + totPaginas +
+                "\n Pagina Atual: " + pagAtual +
+                "\n Aberto: " + aberto + "." +
+                "\n Dados do Leitor:" +
+                "\n Nome: " + leitor.getNome() + ", sexo " + leitor.getSexo() + ", idade " + leitor.getIdade();
+
     }
 
     public Livro(String titulo, String autor, int totPaginas, Pessoa leitor) {
         this.titulo = titulo;
         this.autor = autor;
         this.totPaginas = totPaginas;
+        this.aberto = false;
+        this.pagAtual = 0;
         this.leitor = leitor;
     }
 
@@ -74,26 +77,34 @@ public class Livro implements Publicacao {
 
     @Override
     public void abrir() {
+        this.aberto = true;
 
     }
 
     @Override
     public void fechar() {
+        this.aberto = false;
 
     }
 
     @Override
-    public void folhear() {
+    public void folhear( int p ) {
+      if ( p > totPaginas ){
+          this.pagAtual = 0;
+      } else {
+          this.pagAtual = p;
+      }
 
     }
 
     @Override
     public void avancarPag() {
-
+        this.pagAtual++;
     }
 
     @Override
     public void voltarPag() {
+        this.pagAtual--;
 
     }
 }
